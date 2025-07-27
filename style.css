@@ -82,6 +82,7 @@
     max-width: 400px;
     text-align: left;
     display: none;
+
   }
 
   #resultDiv img {
@@ -112,20 +113,8 @@
     text-decoration: underline;
   }
 
-  .error-box {
-    color: #f85149;
-    background: #2d2323;
-    padding: 10px;
-    margin-top: 1rem;
-    border-radius: 8px;
-    text-align: center;
-    font-weight: bold;
-  }
-  #loader{
-      font-size: 30px;
-      margin-top: 100px;
-      animation: animate 1s ease-in infinite;
-      display: none;
+  #message{
+    display: none;
   }
   @keyframes animate {
       0%{

@@ -1,13 +1,16 @@
 const userName = document.getElementById('input')
-const button = document.getElementById("submit-button")
+const message = document.getElementById("message");
+const user = userName.value.trim();
 const userFinder = async () => {
-    const url = `https://api.github.com/users/${userName.value}`
+  const url = `https://api.github.com/users/${user}`
   
   try {
     const response = await fetch(url);
     const data = await response.json()
-
-
+    if (message ===""){
+      message.style.display = `block`
+    }
+    else if (user === "Haris62"){
     const resultDiv = document.getElementById("resultDiv")
     resultDiv.innerHTML = `
             <img src="${data.avatar_url}" alt="${data.login}" width="120" />
@@ -26,14 +29,15 @@ const userFinder = async () => {
             <p><strong>GitHub Since:</strong> ${new Date(data.created_at).toDateString()}</p>
             <p><a href="${data.html_url}" target="_blank">🔗 View Full GitHub Profile</a></p>
         `;
-        resultDiv.style.display = `block`
-        // userName.value = ""
+          resultDiv.style.display = `block`
+    }   
     }
     catch (error) {
-      resultDiv.innerHTML = `<div class="error-box">❌ Error: ${error.message}</div>`;
+      
       console.log(error);
     }
   }
+  const button = document.getElementById("submit-button")
      button.addEventListener("click", () => {
         userFinder()
         userName.value = ""
